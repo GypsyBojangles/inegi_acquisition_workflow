@@ -14,18 +14,19 @@ def untar_scenes():
     args = parser.parse_args()
     source_folder = args.source_folder
     target_folder = args.target_folder
-    tar_files = glob.glob(source_folder + '/*/*.tar.gz')  # a glob file containing the names of all .tar.gz
-    print(tar_files)
-    print(target_folder)
+    tar_files = glob.glob(source_folder + '/*.tar.gz')  # a glob file containing the names of all .tar.gz
     for tar_filepath in tar_files:
         try:
             with tarfile.open(tar_filepath) as tf:
                 xml = [n for n in tf.getnames() if n[-3:] == 'xml'][0]
                 xml_folder = xml[10:16]
                 scene_name = xml.split('.')[0]
-                out_folder = target_folder + '/' + xml_folder + '/' + scene_name
+                path_row_folder = target_folder + '/' + xml_folder
+                out_folder = path_row_folder + '/' + scene_name
                 print(out_folder)
                 print(tar_filepath)
+                if not os.path.isdir(path_row_folder):
+                    os.mkdir(path_row_folder)
                 try:
                     os.mkdir(out_folder)
                     tf.extractall(out_folder)

@@ -136,8 +136,9 @@ def resume_download():
     username = getpass.getpass(prompt='username for ESPA: ')
     password = getpass.getpass(prompt='password for ESPA: ')
 
-    for order_id in order_ids:
-        start_check_download(order_id, target_folder, username, password)
+    for order_id in reversed(order_ids):
+        if len(order_id) > 0:
+            start_check_download(order_id, target_folder, username, password)
 
 
 if __name__ == '__main__':

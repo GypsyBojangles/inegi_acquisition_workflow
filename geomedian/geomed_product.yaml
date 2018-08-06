@@ -1,0 +1,56 @@
+name: ls_level2_geomedian_annual 
+description: Landsat Level-2 Annual GeoMedian
+metadata:
+   format:
+       name: GeoTiff
+   platform:
+       code: LANDSAT_5,LANDSAT_7,LANDSAT_8
+   instrument:
+       name: TM,ETM,OLI_TIRS
+   product_type: surface_reflectance_statistical_summary
+   statistics: {period: '1y'}
+metadata_type: eo
+
+storage:
+  driver: GeoTiff
+
+  crs: EPSG:32648
+  tile_size:
+    x: 30720.0
+    y: 30720.0
+  resolution:
+    x: 30
+    y: -30
+  dimension_order: [time, y, x]
+
+measurements:
+    - name: 'blue'
+      aliases: [band_2, sr_band2]
+      dtype: int16
+      nodata: -9999
+      units: '1'
+    - name: 'green'
+      aliases: [band_3, sr_band3]
+      dtype: int16
+      nodata: -9999
+      units: '1'
+    - name: 'red'
+      aliases: [band_4, sr_band4]
+      dtype: int16
+      nodata: -9999
+      units: '1'
+    - name: 'nir'
+      aliases: [band_5, sr_band5]
+      dtype: int16
+      nodata: -9999
+      units: '1'
+    - name: 'swir1'
+      aliases: [band_6, sr_band6]
+      dtype: int16
+      nodata: -9999
+      units: '1'
+    - name: 'swir2'
+      aliases: [band_7, sr_band7]
+      dtype: int16
+      nodata: -9999
+      units: '1'
